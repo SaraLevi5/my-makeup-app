@@ -5,6 +5,7 @@ const ROUTES = {
   GALLERY: "/gallery",
   LOGIN: "/login",
   MAKEUPTIPS: "/makeup-tips",
+  FAVORITE: "/favorite",
   REGISTER: "/register",
   SERVICES: "/services",
 };

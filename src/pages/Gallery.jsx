@@ -1,12 +1,27 @@
 import * as React from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import Box from "@mui/material/Box";
 import { Typography } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import ImagesComp from "../components/ImagesComp";
 
 const Gallery = () => {
   const isMobile = useMediaQuery("(max-width:600px)");
+  const [apiImages, setApiImages] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("/images")
+      .then(({ data }) => {
+        console.log({ data });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <Box
@@ -24,43 +39,11 @@ const Gallery = () => {
       <Typography variant="h3" component="h1" gutterBottom>
         My Work Gallery
       </Typography>
-      <ImageList
-        sx={{ width: "90%", height: "auto" }}
-        cols={isMobile ? 1 : 3}
-        rowHeight={350}
-        gap={8}
-      >
-        {itemData.map((item) => (
-          <ImageListItem
-            key={item.img}
-            sx={{
-              position: "relative",
-              overflow: "hidden",
-              "&:hover img": {
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                transform: "scale(1.2)", // Scale up slightly
-              },
-            }}
-          >
-            <img
-              src={`${item.img}`}
-              alt={item.title}
-              loading="lazy"
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                transition: "transform 0.3s ease, z-index 0.3s ease",
-              }}
-            />
-          </ImageListItem>
-        ))}
-      </ImageList>
+      <ImagesComp
+        image="https://images.unsplash.com/photo-1598219062199-a940294982e7?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzl8fG1ha2V1cCUyMGFydGlzdHxlbnwwfHwwfHx8MA%3D%3D"
+        alt="makeup picture"
+        title="image"
+      />
     </Box>
   );
 };

@@ -6,6 +6,7 @@ import Contact from "../pages/Contact";
 import Gallery from "../pages/Gallery";
 import Login from "../pages/Login";
 import MakeupTips from "../pages/MakeupTips";
+import Favorite from "../pages/Favorites.jsx";
 import Register from "../pages/Register";
 import Services from "../pages/Services";
 import NotFound from "../pages/NotFound.jsx";
@@ -19,6 +20,7 @@ const Router = () => {
       <Route path={ROUTES.GALLERY} element={<Gallery />} />
       <Route path={ROUTES.LOGIN} element={<Login />} />
       <Route path={ROUTES.MAKEUPTIPS} element={<MakeupTips />} />
+      <Route path={ROUTES.FAVORITE} element={<Favorite />} />
       <Route path={ROUTES.REGISTER} element={<Register />} />
       <Route path={ROUTES.SERVICES} element={<Services />} />
       {/* <Route path={`${ROUTES.LANDINGPAGE}/:id`} element={<LandingPage />} /> */}

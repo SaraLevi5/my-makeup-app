@@ -1,16 +1,16 @@
 import { Grid, TextField, Alert } from "@mui/material";
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
 
 const TextInputComponent = ({
-  xs,
+  xs = 6,
   sm,
   id,
   label,
-  autoFocus,
+  autoFocus = false,
   value,
   onChange,
   onBlur,
-  errors,
+  // errors,
   required,
   type,
 }) => {
@@ -28,28 +28,23 @@ const TextInputComponent = ({
         onBlur={onBlur}
         type={type}
       />
-      {errors && <Alert severity="error">{errors}</Alert>}
+      {/* {errors && <Alert severity="error">{errors}</Alert>} */}
     </Grid>
   );
 };
 
-TextInputComponent.prototype = {
-  xs: propTypes.number,
-  sm: propTypes.number,
-  id: propTypes.string.isRequired,
-  label: propTypes.string.isRequired,
-  autoFocus: propTypes.bool,
-  value: propTypes.string.isRequired,
-  onChange: propTypes.func.isRequired,
-  onBlur: propTypes.func,
-  errors: propTypes.string,
-  required: propTypes.bool,
-  type: propTypes.string,
-};
-
-TextInputComponent.defaultProps = {
-  xs: 6,
-  autoFocus: false,
+TextInputComponent.propTypes = {
+  xs: PropTypes.number,
+  sm: PropTypes.number,
+  id: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  autoFocus: PropTypes.bool,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onBlur: PropTypes.func,
+  // errors: PropTypes.string,
+  required: PropTypes.bool,
+  type: PropTypes.string,
 };
 
 export default TextInputComponent;

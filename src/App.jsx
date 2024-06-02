@@ -1,25 +1,27 @@
+import { useState } from "react";
 import { BrowserRouter } from "react-router-dom";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { Typography } from "@mui/material";
 import Router from "./routes/Router";
 import LayoutComp from "./layout/LayoutComp";
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#E5C6CE", // Change to your desired primary color
-    },
-  },
-});
+import loginContext from "./context/login.context.js";
+import useAuthCheck from "./hooks/useAuthCheck";
 
 function App() {
+  const [login, setLogin] = useState(null);
+  const isAuthChecked = useAuthCheck();
+
   return (
-    <ThemeProvider theme={theme}>
+    <loginContext.Provider value={{ login, setLogin }}>
       <BrowserRouter>
         <LayoutComp>
-          <Router />
+          {isAuthChecked ? (
+            <Router />
+          ) : (
+            <Typography variant="h1">Loading...</Typography>
+          )}
         </LayoutComp>
       </BrowserRouter>
-    </ThemeProvider>
+    </loginContext.Provider>
   );
 }
 

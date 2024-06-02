@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import {
   AppBar,
@@ -18,7 +18,9 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Logo from "../../assets/images/Logo.png";
-import ROUTES from "../../routes/ROUTES";
+// import ROUTES from "../../routes/ROUTES";
+import Links from "./navigation/Links";
+import SearchAppBar from "./searchBar";
 
 const drawerWidth = 240;
 const navItems = [
@@ -40,10 +42,10 @@ function Header(props) {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <img src={Logo} alt="logo" style={{ my: 2 }} />
+      <img src={Logo} alt="logo" style={{ my: 2, width: "100%" }} />
 
       <Divider />
-      <List>
+      {/* <List>
         {navItems.map((item) => (
           <ListItem key={item} disablePadding>
             <ListItemButton sx={{ textAlign: "center" }}>
@@ -51,7 +53,7 @@ function Header(props) {
             </ListItemButton>
           </ListItem>
         ))}
-      </List>
+      </List> */}
     </Box>
   );
 
@@ -89,7 +91,7 @@ function Header(props) {
               style={{ width: "50%", height: "20%", objectFit: "cover" }}
             />
           </Box>
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
+          {/* <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
               <Button
                 key={item}
@@ -99,7 +101,9 @@ function Header(props) {
                 {item}
               </Button>
             ))}
-          </Box>
+          </Box> */}
+          <SearchAppBar />
+          <Links />
         </Toolbar>
       </AppBar>
       <nav>
